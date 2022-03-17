@@ -1,0 +1,64 @@
+Задание 1
+
+sqlite> CREATE VIEW courses_and_streams AS SELECT
+   ...>         courses.name,
+   ...>         MAX(streams.number) AS latest_number,
+   ...>         streams.started_at,
+   ...>         AVG(grades.performance) AS avg_performance
+   ...> FROM courses
+   ...>         LEFT JOIN streams
+   ...>                 ON courses.id = streams.course_id
+   ...>         LEFT JOIN grades
+   ...>                 ON streams.id = grades.stream_id
+   ...> GROUP BY courses.name;
+
+sqlite> SELECT * FROM courses_and_streams;
+
+name                    latest_number  started_at  avg_performance
+----------------------  -------------  ----------  ---------------
+Linux. Рабочая станция  165            2020-08-18  4.7
+Базы данных             210            2020-12-03  4.85
+Основы Python           178            2020-10-02  4.9
+
+
+Задание 2
+
+sqlite> BEGIN TRANSACTION;
+sqlite>         DELETE FROM teachers WHERE id = 3;
+sqlite>         DELETE FROM grades WHERE teacher_id = 3;
+sqlite> COMMIT;
+
+Наверно можно было бы пойти ещё дальше и удалить поток, который учился у удаляемого учителя, но так как мы не знаем, будет ли поток расформирован, или его перекинут другому преподавателю, я не стал этого делать.
+
+
+Задание 3
+
+sqlite> CREATE TRIGGER performance_check BEFORE INSERT
+   ...> ON grades
+   ...> BEGIN
+   ...>         SELECT CASE
+   ...>         WHEN
+   ...>                 (NEW.performance NOT BETWEEN 0.1 AND 5)
+   ...>         THEN
+   ...>                 RAISE(ABORT, 'Performance is too big or too low. Try again.')
+   ...>         END;
+   ...> END;
+
+Проверка:
+
+sqlite> INSERT INTO grades VALUES (3, 2, 0);
+Error: Performance is too big or too low. Try again.
+
+sqlite> INSERT INTO grades VALUES (3, 2, 6);
+Error: Performance is too big or too low. Try again.
+
+sqlite> INSERT INTO grades VALUES (3, 2, 4);
+sqlite> SELECT * FROM grades;
+
+teacher_id  stream_id  performance
+----------  ---------  -----------
+3           1          4.7
+2           2          4.9
+1           3          4.8
+1           4          4.9
+3           2          4.0

@@ -1,0 +1,53 @@
+Задание 1
+
+sqlite> SELECT
+   ...> number,
+   ...> (SELECT name FROM courses WHERE courses.id = streams.course_id) AS course,
+   ...> students_amount
+   ...> FROM streams WHERE students_amount >= 40;
+
+number  course       students_amount
+------  -----------  ---------------
+210     Базы данных  41
+
+
+Задание 2
+
+sqlite> SELECT
+   ...> (SELECT number FROM streams WHERE streams.id = grades.stream_id) AS stream_number,
+   ...> (SELECT name FROM courses WHERE courses.id = (SELECT course_id FROM streams WHERE streams.id = grades.stream_id )) AS stream_name,
+   ...> (SELECT name || ' ' || surname FROM teachers WHERE teachers.id = grades.teacher_id) AS teacher,
+   ...> performance
+   ...> FROM grades ORDER BY performance LIMIT 2;
+
+stream_number  stream_name             teacher           performance
+-------------  ----------------------  ----------------  -----------
+165            Linux. Рабочая станция  Елена Малышева    4.7
+203            Базы данных             Николай Савельев  4.8
+
+
+Задание 3
+
+sqlite> SELECT
+   ...> teacher_id,
+   ...> AVG(performance) FROM grades WHERE teacher_id = (SELECT id FROM teachers WHERE teachers.name = 'Николай' AND teachers.surname = 'Савельев');
+
+teacher_id  AVG(performance)
+----------  ----------------
+1           4.85
+
+
+Задание 4
+
+sqlite> SELECT
+   ...> 'Наталья Петрова' AS teacher,
+   ...> number FROM streams WHERE id = (SELECT stream_id FROM grades WHERE teacher_id = (SELECT id FROM teachers WHERE name = 'Наталья' AND surname = 'Петрова'))
+   ...> UNION
+   ...> SELECT
+   ...> (SELECT name || ' ' || surname FROM teachers WHERE id = (SELECT teacher_id FROM grades WHERE performance < 4.8)),
+   ...> number FROM streams WHERE id = (SELECT stream_id FROM grades WHERE performance < 4.8);
+
+teacher          number
+---------------  ------
+Елена Малышева   165
+Наталья Петрова  178

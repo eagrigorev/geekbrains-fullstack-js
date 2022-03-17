@@ -1,0 +1,42 @@
+Задание 1
+
+sqlite> SELECT DISTINCT
+   ...>         courses.name,
+   ...>         SUM(streams.students_amount) OVER (PARTITION BY courses.id) AS students_amount
+   ...>         FROM courses
+   ...>                 LEFT JOIN streams
+   ...>                         ON streams.course_id = courses.id
+   ...>         ORDER BY courses.name;
+
+name                    students_amount
+----------------------  ---------------
+Linux. Рабочая станция  34
+Базы данных             76
+Основы Python           37
+
+
+Задание 2
+
+sqlite> SELECT DISTINCT
+   ...>         teachers.id,
+   ...>         teachers.surname,
+   ...>         teachers.name,
+   ...>         AVG(grades.performance) OVER (PARTITION BY teachers.id) AS avg_performance
+   ...>         FROM teachers
+   ...>                 LEFT JOIN grades
+   ...>                         ON grades.teacher_id = teachers.id
+   ...>         ORDER BY teachers.id;
+
+id  surname   name     avg_performance
+--  --------  -------  ---------------
+1   Савельев  Николай  4.85
+2   Петрова   Наталья  4.9
+3   Малышева  Елена    4.7
+
+
+Задание 3
+
+Я думаю, что логично будет создать два индекса: на фамилии преподавателей, так как обычно по фамилиям ищут, а не по именам, и ещё индекс на номера потоков. Оценки привязаны к потокам, поэтому на них индексы делать наверно не надо.
+
+CREATE INDEX teachers_surname_idx ON teachers(surname);
+CREATE UNIQUE INDEX streams_number_uq ON streams(number);
