@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.gallery {
+    &__headline {
+        padding-top: 20px;
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        &__item {
+            min-height: 300px;
+            padding: 5px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &__img {
+                & img {
+                    max-width: 100%;
+                }
+            }
+            &__audio {
+                background-color: #f1f3f4;
+                & audio {
+                    padding-top: 30%;
+                    padding-bottom: 30%;
+                    width: 100%;
+                }
+            }
+            &__video {
+                & video {
+                    max-width: 100%;
+                }
+            }
+            &__title {
+                padding-top: 15px;
+            }
+        }
+    }
+}
