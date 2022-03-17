@@ -1,0 +1,32 @@
+{
+    "name": "gb-node-js-basics",
+    "version": "1.0.0",
+    "description": "Домашние задания по курсу \"Node.js\" от университета GeekBrains.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node lesson-4/reader.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/eagrigorev/gb-node-js-basics.git"
+    },
+    "author": "eagrigorev",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/eagrigorev/gb-node-js-basics/issues"
+    },
+    "homepage": "https://github.com/eagrigorev/gb-node-js-basics#readme",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "date-fns": "^2.27.0",
+        "express": "^4.17.1",
+        "inquirer": "^8.2.0",
+        "socket.io": "^4.4.0",
+        "yargs": "^17.3.0"
+    },
+    "bin": {
+        "reader": "lesson-4/reader.js",
+        "server-reader": "lesson-5/server-reader.js"
+    }
+}
