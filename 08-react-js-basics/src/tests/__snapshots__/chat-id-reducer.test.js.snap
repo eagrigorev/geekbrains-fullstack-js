@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatId reducer state testing Returns the correct state after handleChatId action passed 1`] = `
+Object {
+  "chatId": 5,
+}
+`;

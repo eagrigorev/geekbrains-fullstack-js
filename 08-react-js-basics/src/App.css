@@ -1,0 +1,116 @@
+body {
+  padding: 25px;
+  max-width: 1200px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.home {
+  font-style: italic;
+}
+
+.home span {
+  font-style: normal;
+}
+
+.message {
+  border: 1px solid #ACDDDE;
+  background: #E1F8DC;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.message:nth-child(even) {
+  margin-left: 240px;
+  background: #FFE7C7;
+}
+
+.chats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.chats__wrap {
+  height: 250px;
+  overflow-y: scroll;
+  border: 1px solid #ACDDDE;
+  padding: 15px;
+}
+
+.chats__list {
+  height: 250px;
+  width: 500px;
+  overflow-y: scroll;
+  border: 1px solid #ACDDDE;
+  padding: 15px;
+}
+
+.form {
+  padding-top: 25px;
+}
+
+.form button {
+  padding: 10px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.MuiList-root:hover {
+  cursor: pointer;
+  background: #FEF8DD;
+}
+
+.MuiOutlinedInput-root {
+  margin-right: 10px;
+}
+
+.profile__input button {
+  padding: 10px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.quote__message {
+  border: 1px solid #ACDDDE;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+.quote__message--ok {
+  background: #E1F8DC;
+}
+
+.quote__message--loading {
+  background: #FFE7C7;
+}
+
+.quote__message--error {
+  background: red;
+}
+
+.quote__button {
+  padding: 10px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.register button {
+  padding: 10px;
+  height: 56px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.register__error-button {
+  background: none;
+  border: none;
+  color: red;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+/*# sourceMappingURL=App.css.map */
