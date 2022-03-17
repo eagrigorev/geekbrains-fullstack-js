@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3 Task 1</title>
+    <script>
+        var i = 1; // Главный ряд от 1 до 100.
+        var j; // То, на что делим i.
+        var flag = true; // Изначально считаем что число - простое.
+        while (i <= 100) {
+            j = 2; // Так как мы считаем, что число простое, то делить его на себя и на 1 нет смысла.
+            while ((j > 1) && (j < i)) {
+                if ((i % j) == 0) {
+                    flag = false; // Нет, не простое. Разделилось на что-то между 1 и i без остатка.
+                    break;
+                }
+                else {
+                    flag = true;
+                }
+                j++;
+            }
+            if (flag == true) {
+                console.log(i);
+            }
+            i++;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

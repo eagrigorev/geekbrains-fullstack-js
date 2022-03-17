@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3 Task 2 and Task 3</title>
+    <script>
+        function mistake() {
+            alert("To err is Human, to edit - Divine"); // Выводит сообщение об ошибке в случае отрицательных или нулевых цены/количества и переходит назад на введение названия товара
+        }
+
+        var itemName, itemPrice, itemQuantity; // Параметры одного товара
+        var item; // Товар с параметрами, указанными выше
+        var cart = []; // Корзина товаров
+        var totalPrice = totalAmount = totalQuantity = 0; //Счётчики полной стоимости и общего количества товаров
+
+        for (; ;) {
+            itemName = prompt("Введите название товара. Введите 'stop' для выхода");
+            if (itemName == "stop") {
+                break;
+            }
+            itemPrice = +prompt("Укажите стоимость товара " + itemName);
+            if (itemPrice <= 0) {
+                mistake();
+                continue;
+            }
+            itemQuantity = +prompt("Укажите количество единиц товара " + itemName);
+            if (itemQuantity <= 0) {
+                mistake();
+                continue;
+            }
+            item = {
+                name: itemName,
+                price: itemPrice,
+                quantity: itemQuantity
+            }
+            cart.push(item);
+            totalQuantity++;
+            totalAmount += item.quantity;
+            totalPrice += item.price * item.quantity;
+        }
+        for (var i = 0; i < cart.length; i++) {
+            document.write((i + 1) + "." + " " + cart[i].name + " " + cart[i].quantity + " x " + cart[i].price + " рублей <br>");
+        }
+        document.write("-------------------<br>");
+        document.write("В вашей корзине из " + totalQuantity + " позиций суммарно " + totalAmount + " товаров на общую сумму " + totalPrice + " рублей");
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
