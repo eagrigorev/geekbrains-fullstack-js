@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatWindow testing Returns a rendered component with a fake store 1`] = `"John Galt: Who am I?"`;
