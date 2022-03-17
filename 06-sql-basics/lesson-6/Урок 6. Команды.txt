@@ -1,0 +1,45 @@
+Задание 1
+
+sqlite> SELECT streams.number, courses.name, streams.started_at
+   ...> FROM streams LEFT JOIN courses
+   ...> ON streams.course_id = courses.id;
+
+number  name                    started_at
+------  ----------------------  ----------
+165     Linux. Рабочая станция  2020-08-18
+178     Основы Python           2020-10-02
+203     Базы данных             2020-11-12
+210     Базы данных             2020-12-03
+
+
+Задание 2
+
+sqlite> SELECT
+   ...> courses.name,
+   ...> SUM(streams.students_amount) AS students_amount
+   ...> FROM courses
+   ...> LEFT JOIN streams
+   ...> ON courses.id = streams.course_id
+   ...> GROUP BY courses.name;
+
+name                    students_amount
+----------------------  ---------------
+Linux. Рабочая станция  34
+Базы данных             76
+Основы Python           37
+
+
+Задание 3
+
+sqlite> SELECT
+   ...> teachers.id, teachers.surname, teachers.name,
+   ...> AVG(grades.performance) AS avg_performance
+   ...> FROM teachers LEFT JOIN grades
+   ...> ON teachers.id = grades.teacher_id
+   ...> GROUP BY teachers.id;
+
+id  surname   name     avg_performance
+--  --------  -------  ---------------
+1   Савельев  Николай  4.85
+2   Петрова   Наталья  4.9
+3   Малышева  Елена    4.7

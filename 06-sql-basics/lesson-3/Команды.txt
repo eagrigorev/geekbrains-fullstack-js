@@ -1,0 +1,35 @@
+Задание 1 
+
+ALTER TABLE streams RENAME COLUMN start_date TO started_at;
+
+Задание 2
+
+ALTER TABLE streams ADD COLUMN finished_at TEXT NOT NULL;
+
+Задание 3
+
+Таблица teachers
+INSERT INTO teachers VALUES (1, 'Николай', 'Савельев', 'saveliev.n@mai.ru');
+INSERT INTO teachers (name, surname, email) VALUES ('Наталья', 'Петрова', 'petrova.n@yandex.ru'), ('Елена', 'Малышева', 'malisheva.e@google.com');
+
+Таблица courses
+ALTER TABLE courses RENAME COLUMN course_name TO name;
+INSERT INTO courses VALUES (1, 'Базы данных');
+INSERT INTO courses (name) VALUES ('Основы Python'), ('Linux. Рабочая станция');
+
+Таблица streams
+ALTER TABLE streams DROP COLUMN finished_at;
+ALTER TABLE streams RENAME COLUMN students TO students_amount;
+INSERT INTO streams VALUES (1, 3, 165, '18.08.2020', 34);
+INSERT INTO streams (course_id, number, started_at, students_amount)  VALUES (2, 178, '02.10.2020', 37), (1, 203, '12.11.2020', 35), (1, 210, '03.12.2020', 41);
+
+Таблица grades
+ALTER TABLE grades RENAME COLUMN grade TO performance;
+INSERT INTO grades VALUES (3, 1, 4.7), (2, 2, 4.9), (1, 3, 4.8), (1, 4, 4.9);
+
+Задание 4
+
+ALTER TABLE grades ADD COLUMN stream_id_real REAL NOT NULL; - создаём дополнительный столбец с типом REAL
+UPDATE grades SET stream_id_real = stream_id; - копируем все данные из старого столбца с ключами потока в новый
+ALTER TABLE grades DROP COLUMN stream_id; - удаляем исходный столбец с ключами потока
+ALTER TABLE grades RENAME COLUMN stream_id_real TO stream_id; - переименовываем новый столбец с REAL чтобы восстановить ссылки на другие таблицы
