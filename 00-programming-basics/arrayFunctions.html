@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	function array123N(n){
+		var arr = [];
+		for (var i = 0; i <= (n - 1); i++){
+			arr.push(i + 1);
+		}
+		return arr;
+	}
+
+	function generateArray(n){
+		var randomArray = [];
+		for (var i = 0; i < n; i++){
+			var randomElement = parseInt(Math.random() * 100);
+			randomArray.push(randomElement);
+		}
+		return randomArray;	
+	}
+
+	function arraySum(randomArray){
+		var sum = 0;
+		for (var i = 0; i < randomArray.length; i++){
+			sum = parseInt(sum + randomArray[i]);
+		}
+		return sum;
+	}
+
+	function arrayMax(randomArray){
+		var max = randomArray[0];
+		for (var i = 0; i < randomArray.length; i++){
+			if (max < randomArray[i])
+				max = randomArray[i];
+			else
+				continue;
+		}
+		return max;
+	}
+
+	function arrayMin(randomArray){
+		var min = randomArray[0];
+		for (var i = 0; i < randomArray.length; i++){
+			if (min > randomArray[i])
+				min = randomArray[i];
+			else
+				continue;
+		}
+		return min;
+	}
+
+	function arrayDiv2(randomArray){
+		var arrDiv2 = [];
+		var j = 0;
+		for (var i = 0; i < randomArray.length; i++){
+			if (randomArray[i] % 2 == 0){
+				arrDiv2[j] = randomArray[i];
+				j++;
+			} else
+				continue;
+		}
+		return arrDiv2;
+	}
+
+	var n = +prompt("Введите число элементов массива");
+
+	alert("Случайный массив: " + generateArray(n));
+	alert("Сумма элементов случайного массива: " + arraySum(generateArray(n)));
+	alert("Максимум случайного массива: " + arrayMax(generateArray(n)));
+	alert("Минимум случайного массива: " + arrayMin(generateArray(n)));
+	alert("Новый массив из чётных элементов случайного массива: " + arrayDiv2(generateArray(n)));
+
+</script>
