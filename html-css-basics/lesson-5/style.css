@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+        width: 1140px;
+        margin: 0 auto;
+}
+.navigation {
+        display: flex;
+        justify-content: space-between;
+}
+.welcome-heading {
+        width: 510px;
+}
+.welcome-text {
+        width: 425px;
+}
+.info-cards {
+        display: flex;
+        justify-content: space-between;
+}
+.card {
+        width: 359px;
+}
+.cta-text {
+        width: 495px;
+}
+.cta-header {
+        width: 340px;
+}
+.contact-elements {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+}
+.contact-cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+body {
+    font-family: sans-serif;
+}
+.text {
+    font-size: 16px;
+    line-height: 26px;
+    color: #1F3F68;
+}
+.h1header {
+    font-size: 64px;
+    color: #1F3F68;
+}
+.h2header {
+    font-weight: 500;
+    font-size: 44px;
+    text-align: center;
+}
+.h3header {
+    font-size: 36px;
+    text-align: center;
+}
+.h4header {
+    font-size: 20px;
+    line-height: 30px;
+    color: #1F3F68;
+}
+.formstyling {
+    border: 1px solid #356EAD;
+    box-sizing: border-box;
+    border-radius: 10px;
+    opacity: 0.4;
+}
+.buttonstyling {
+    background: #5A98D0;
+    box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
