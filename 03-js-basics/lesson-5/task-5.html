@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5</title>
+    <script>
+        function chess() {
+
+            // 1. Создание рабочей области 10х10: 8х8 для игрового поля + по одной колонке и столбцу по краям для разметки
+
+            var table = document.createElement("table");
+            var tr, td;
+            for (var i = 0; i <= 9; i++) {
+                tr = document.createElement("tr");
+                table.append(tr);
+                for (var j = 0; j <= 9; j++) {
+                    td = document.createElement("td");
+                    td.style.height = "60px";
+                    td.style.width = "60px";
+                    tr.append(td);
+
+                    // 1.1 Создание светлой рамки по краям
+
+                    switch (i) {
+                        case 0:
+                        case 9:
+                            td.style.backgroundColor = "gainsboro";
+                            break;
+                    }
+                    switch (j) {
+                        case 0:
+                        case 9:
+                            td.style.backgroundColor = "gainsboro";
+                            break;
+                    }
+
+                    // 1.2 Создание внутренней области
+
+                    if ((i > 0) && (i < 9) && (j > 0) && (j < 9)) {
+                        td.style.fontSize = "40px"; // Чтобы фигуры были больше, чем разметка
+                        if (((i % 2 != 0) && (j % 2 == 0)) || ((i % 2 == 0) && (j % 2 != 0))) {
+                            td.style.backgroundColor = "darkSeaGreen";
+                        }
+                        else {
+                            td.style.backgroundColor = "floralWhite";
+                        }
+
+                    }
+                }
+            }
+            table.style.textAlign = "center";
+            document.body.append(table);
+
+            // 2. Создание разметки и пешек
+
+            for (i = 1; i <= 8; i++) {
+                table.rows[0].cells[i].innerHTML = "&#" + (64 + i) + ";";
+                table.rows[0].cells[i].style.transform = "rotate(-180deg)";
+                table.rows[9].cells[i].innerHTML = "&#" + (64 + i) + ";";
+                table.rows[i].cells[0].innerHTML = 9 - i;
+                table.rows[i].cells[9].innerHTML = 9 - i;
+                table.rows[i].cells[9].style.transform = "rotate(-180deg)";
+                table.rows[2].cells[i].innerHTML = "&#9823;"; // Чёрные пешки
+                table.rows[7].cells[i].innerHTML = "&#9817;"; // Белые пешки
+            }
+
+            // 3. Разные фигуры. Сперва хотел выставить симметричные ладьи-кони-слоны через цикл сразу с двух сторон зеркально, но потом заметил, что юникоды у них не по порядку, поэтому порядок фигур был бы нарушен
+
+            table.rows[1].cells[1].innerHTML = table.rows[1].cells[8].innerHTML = "&#9820;"; // Чёрные ладьи
+            table.rows[8].cells[1].innerHTML = table.rows[8].cells[8].innerHTML = "&#9814;"; // Белые ладьи
+            table.rows[1].cells[2].innerHTML = table.rows[1].cells[7].innerHTML = "&#9822;"; // Чёрные кони
+            table.rows[8].cells[2].innerHTML = table.rows[8].cells[7].innerHTML = "&#9816;"; // Белые кони
+            table.rows[1].cells[3].innerHTML = table.rows[1].cells[6].innerHTML = "&#9821;"; // Чёрные слоны
+            table.rows[8].cells[3].innerHTML = table.rows[8].cells[6].innerHTML = "&#9815;"; // Белые слоны
+            table.rows[1].cells[4].innerHTML = "&#9819;"; // Чёрный король
+            table.rows[1].cells[5].innerHTML = "&#9818;"; // Чёрный ферзь
+            table.rows[8].cells[4].innerHTML = "&#9813;"; // Белый король
+            table.rows[8].cells[5].innerHTML = "&#9812;"; // Белый ферзь
+        }
+        window.onload = chess;
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
