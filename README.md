@@ -1,2 +1,3 @@
-# geekbrains-fullstack-js
-Fullstack JavaScript educational course in GeekBrains university.
+## GeekBrains Full Stack JS
+
+This is a homework repository.
